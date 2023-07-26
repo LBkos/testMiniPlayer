@@ -70,7 +70,8 @@ struct MiniPlayer: View {
         }
         .offset(y: -offsetPlayerBottom)
         .offset(y: offset)
-        .gesture(
+        
+        .highPriorityGesture(
             DragGesture()
                 .onChanged(onChanged(_:))
                 .onEnded(onEnded(_:))
