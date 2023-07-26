@@ -11,6 +11,7 @@
 		B54C509B2A7044D000A0CD59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54C509A2A7044D000A0CD59 /* ContentView.swift */; };
 		B54C509D2A7044D200A0CD59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54C509C2A7044D200A0CD59 /* Assets.xcassets */; };
 		B54C50A12A7044D200A0CD59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B54C50A02A7044D200A0CD59 /* Preview Assets.xcassets */; };
+		B54C50A82A70F58800A0CD59 /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54C50A72A70F58800A0CD59 /* MiniPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		B54C509C2A7044D200A0CD59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B54C509E2A7044D200A0CD59 /* MusicTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MusicTest.entitlements; sourceTree = "<group>"; };
 		B54C50A02A7044D200A0CD59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B54C50A72A70F58800A0CD59 /* MiniPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				B54C50982A7044D000A0CD59 /* MusicTestApp.swift */,
 				B54C509A2A7044D000A0CD59 /* ContentView.swift */,
+				B54C50A72A70F58800A0CD59 /* MiniPlayer.swift */,
 				B54C509C2A7044D200A0CD59 /* Assets.xcassets */,
 				B54C509E2A7044D200A0CD59 /* MusicTest.entitlements */,
 				B54C509F2A7044D200A0CD59 /* Preview Content */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54C50A82A70F58800A0CD59 /* MiniPlayer.swift in Sources */,
 				B54C509B2A7044D000A0CD59 /* ContentView.swift in Sources */,
 				B54C50992A7044D000A0CD59 /* MusicTestApp.swift in Sources */,
 			);
