@@ -14,22 +14,24 @@ struct MiniPlayer: View {
     let safeArea = UIApplication.shared.windows.first?.safeAreaInsets
     @State var viewHeight: CGFloat = 60
     @State var offset: CGFloat = 0
+    @State var offsetImage: CGFloat = 0
     @State var scale: CGFloat = 40
     var body: some View {
         VStack {
-            Capsule()
-                .fill(.gray)
-                .frame(width: expand ? 60 : 0, height: expand ? 4 : 0)
-                .padding(.top, expand ? safeArea?.top : 0)
-                .onTapGesture {
-                    withAnimation(.spring()) {
-                        expand = false
-                        scale = 40
+            if expand {
+                Capsule()
+                    .fill(.gray)
+                    .frame(width: expand ? 60 : 0, height: expand ? 4 : 0)
+                    .padding(.top, expand ? safeArea?.top : 0)
+                    .onTapGesture {
+                        withAnimation(.spring()) {
+                            expand = false
+                            scale = 40
+                        }
                     }
-                }
-                .padding(.vertical, expand ? 20 : 0)
-                .opacity(expand ? 1 : 0)
-            
+                    .padding(.vertical, expand ? 20 : 0)
+                    .opacity(expand ? 1 : 0)
+            }
             
             
             HStack(alignment: .center) {
@@ -39,8 +41,8 @@ struct MiniPlayer: View {
                     .frame(width: scale, height: scale)
                     .background(.ultraThinMaterial)
                     .background(expand ? Color.gray : Color.black)
-                    
                     .cornerRadius(8)
+                    .offset(x: !expand ? -offsetImage : 0)
                 if !expand {
                     Spacer()
                 }
@@ -78,6 +80,7 @@ struct MiniPlayer: View {
         if value.translation.height < 0 && !expand {
             viewHeight -= value.translation.height
             scale -= value.translation.height / 3
+            offsetImage += value.translation.height / 20
         }
         
         print(value.translation.height)
@@ -94,6 +97,7 @@ struct MiniPlayer: View {
                 scale = height
             }
             offset = 0
+            offsetImage = 0
         }
     }
 }
