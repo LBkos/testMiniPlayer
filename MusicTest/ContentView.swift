@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Namespace var animation
     @State var expand = false
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
@@ -39,7 +38,7 @@ struct ContentView: View {
                             Label("Search", systemImage: "magnifyingglass")
                         }
             }
-            MiniPlayer(animation: animation, expand: $expand)
+            MiniPlayer(expand: $expand)
         }
     }
 }

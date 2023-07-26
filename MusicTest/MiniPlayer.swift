@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MiniPlayer: View {
-    var animation: Namespace.ID
     @Binding var expand: Bool
     let height = UIScreen.main.bounds.height / 3
    
