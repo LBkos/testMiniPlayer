@@ -29,6 +29,7 @@ struct MiniPlayer: View {
                         withAnimation(.spring()) {
                             expand = false
                             scale = 40
+                            offsetPlayerBottom = 48
                         }
                     }
                     .padding(.vertical, expand ? 20 : 0)
@@ -50,7 +51,7 @@ struct MiniPlayer: View {
                 }
                 
             }
-            .padding(.leading)
+            .padding(.leading, expand ? 0 : 16)
             .frame(maxWidth: .infinity)
             
             if expand {  Spacer() }
@@ -64,6 +65,7 @@ struct MiniPlayer: View {
             withAnimation(.spring()) {
                 expand = true
                 scale = height
+                offsetPlayerBottom = 0
             }
         }
         .offset(y: -offsetPlayerBottom)
