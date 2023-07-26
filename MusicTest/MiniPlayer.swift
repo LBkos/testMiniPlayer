@@ -82,7 +82,7 @@ struct MiniPlayer: View {
         if value.translation.height > 0 && expand {
             offset = value.translation.height
         }
-        if value.translation.height < 0 && !expand {
+        if value.translation.height < 0 || viewHeight >= 100 && !expand {
             viewHeight -= value.translation.height
             scale -= value.translation.height / 3
             offsetImageX += value.translation.height / 15
@@ -96,7 +96,7 @@ struct MiniPlayer: View {
     }
     func onEnded(_ value: DragGesture.Value) {
         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.95, blendDuration: 0.7)) {
-            if value.translation.height > height {
+            if value.translation.height > height || viewHeight < 100 {
                 expand = false
                 viewHeight = 60
                 scale = 40
