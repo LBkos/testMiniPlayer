@@ -14,7 +14,9 @@ struct MiniPlayer: View {
     let safeArea = UIApplication.shared.windows.first?.safeAreaInsets
     @State var viewHeight: CGFloat = 60
     @State var offset: CGFloat = 0
-    @State var offsetImage: CGFloat = 0
+    @State var offsetImageX: CGFloat = 0
+    @State var offsetImageY: CGFloat = 0
+    @State var offsetPlayerBottom: CGFloat = 48
     @State var scale: CGFloat = 40
     var body: some View {
         VStack {
@@ -42,7 +44,7 @@ struct MiniPlayer: View {
                     .background(.ultraThinMaterial)
                     .background(expand ? Color.gray : Color.black)
                     .cornerRadius(8)
-                    .offset(x: !expand ? -offsetImage : 0)
+                    .offset(x: !expand ? -offsetImageX : 0, y: !expand ? offsetImageY : 0)
                 if !expand {
                     Spacer()
                 }
@@ -64,7 +66,7 @@ struct MiniPlayer: View {
                 scale = height
             }
         }
-        .offset(y: expand ? 0 : -48)
+        .offset(y: -offsetPlayerBottom)
         .offset(y: offset)
         .gesture(
             DragGesture()
@@ -80,10 +82,14 @@ struct MiniPlayer: View {
         if value.translation.height < 0 && !expand {
             viewHeight -= value.translation.height
             scale -= value.translation.height / 3
-            offsetImage += value.translation.height / 20
+            offsetImageX += value.translation.height / 15
+            offsetImageY += value.translation.height / 5
+            offsetPlayerBottom += value.translation.height / 5
         }
         
-        print(value.translation.height)
+        print("translation.",value.translation.height)
+        print(offsetPlayerBottom)
+        print(expand)
     }
     func onEnded(_ value: DragGesture.Value) {
         withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.95, blendDuration: 0.7)) {
@@ -91,13 +97,16 @@ struct MiniPlayer: View {
                 expand = false
                 viewHeight = 60
                 scale = 40
-                
+                offsetPlayerBottom = 48
             } else {
                 expand = true
                 scale = height
+                offsetPlayerBottom = 0
             }
             offset = 0
-            offsetImage = 0
+            offsetImageX = 0
+            offsetImageY = 0
+            
         }
     }
 }
